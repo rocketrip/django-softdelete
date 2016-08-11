@@ -173,7 +173,14 @@ class SoftDeleteObject(models.Model):
                     getattr(self, rel).__class__.objects.all().delete(
                         changeset=changeset)
                 except:
-                    getattr(self, rel).__class__.objects.all().delete()
+                    try:
+                        getattr(self, rel).__class__.objects.all().delete()
+                    except:
+                        for item in getattr(self, rel).all():
+                            try:
+                                item.delete(changeset=changeset)
+                            except:
+                                item.delete()
 
     def delete(self, *args, **kwargs):
         if self.deleted_at:
