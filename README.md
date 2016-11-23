@@ -1,3 +1,7 @@
+Patched with https://github.com/rocketrip/django-softdelete/commit/51b38642662d0f09c0157a3ae5f8579173828b4e
+
+---
+
 django-softdelete
 
 Soft delete for Django ORM, with support for undelete.
